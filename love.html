@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Do You Love Me? — For Rajvieeeee</title>
+<style>
+/* ============================================================
+   For Rajvieeeee — shared theme
+   A handwritten scrapbook, not a template. Paper, ink, tape,
+   polaroids pinned to a corkboard. Every accent borrows from
+   things already in the photos: henna, kissed paper, string lights.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root{
+  --paper:      #FBF3EC;
+  --paper-deep: #F1E3D2;
+  --card:       #FFFDF9;
+  --ink:        #3B2331;
+  --ink-soft:   #6E5361;
+  --rose:       #A8425A;
+  --rose-deep:  #7E2E42;
+  --blush:      #F3C9D4;
+  --gold:       #C89B5C;
+  --gold-soft:  #E4C88E;
+  --sage:       #E7DCC6;
+
+  --shadow-card: 0 10px 24px -12px rgba(59,35,49,0.35);
+  --radius-card: 3px;
+}
+
+*{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+
+body{
+  margin: 0;
+  background:
+    radial-gradient(ellipse at 15% 0%, rgba(200,155,92,0.10), transparent 45%),
+    radial-gradient(ellipse at 85% 20%, rgba(168,66,90,0.07), transparent 40%),
+    var(--paper);
+  color: var(--ink);
+  font-family: 'Literata', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .script{
+  font-family: 'Caveat', cursive;
+  color: var(--rose-deep);
+  font-weight: 700;
+  line-height: 1.05;
+  margin: 0 0 .2em 0;
+}
+
+h1{ font-size: clamp(2.6rem, 7vw, 4.6rem); }
+h2{ font-size: clamp(2rem, 5vw, 3rem); }
+h3{ font-size: clamp(1.5rem, 3vw, 1.9rem); }
+
+p{ max-width: 62ch; }
+
+a{ color: var(--rose); }
+
+::selection{ background: var(--blush); color: var(--ink); }
+
+/* focus visibility, kept even though we style things by hand */
+a:focus-visible, button:focus-visible, .memory:focus-visible{
+  outline: 2px solid var(--rose);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation: none !important; transition: none !important; }
+}
+
+/* ---------- header / nav ---------- */
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .9rem 1.6rem;
+  background: rgba(251, 243, 236, 0.88);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(200,155,92,0.4);
+}
+
+.wordmark{
+  font-family: 'Caveat', cursive;
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--rose-deep);
+  text-decoration: none;
+  display: flex;
+  align-items: baseline;
+  gap: .35rem;
+}
+.wordmark .heart{ font-size: 1rem; transform: translateY(-2px); }
+
+.site-nav{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.1rem 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-nav a{
+  font-family: 'Literata', serif;
+  font-size: .93rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color .2s ease, border-color .2s ease;
+  white-space: nowrap;
+}
+.site-nav a:hover,
+.site-nav a.current{
+  color: var(--rose-deep);
+  border-color: var(--gold);
+}
+
+.nav-toggle{
+  display: none;
+  background: none;
+  border: 1px solid var(--gold);
+  border-radius: var(--radius-card);
+  color: var(--rose-deep);
+  font-family: 'Literata', serif;
+  font-size: .85rem;
+  padding: .35rem .7rem;
+  cursor: pointer;
+}
+
+@media (max-width: 760px){
+  .nav-toggle{ display: inline-block; }
+  .site-nav{
+    display: none;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid rgba(200,155,92,0.4);
+    padding: 1rem 1.6rem 1.4rem;
+    flex-direction: column;
+    gap: .9rem;
+  }
+  .site-nav.open{ display: flex; }
+}
+
+/* ---------- generic page chrome ---------- */
+.wrap{ max-width: 1080px; margin: 0 auto; padding: 0 1.6rem; }
+
+.hero{
+  padding: 4.2rem 1.6rem 2.6rem;
+  text-align: center;
+}
+.hero .kicker{
+  font-family: 'Literata', serif;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  margin-bottom: .6rem;
+}
+.hero p.lede{
+  margin: 1rem auto 0;
+  color: var(--ink-soft);
+}
+
+.site-footer{
+  text-align: center;
+  padding: 3rem 1.6rem 2.6rem;
+  color: var(--ink-soft);
+  font-size: .9rem;
+}
+.site-footer .script{ font-size: 1.4rem; display:block; margin-bottom:.3rem; }
+
+/* ---------- decorative bits ---------- */
+.tape{
+  position: absolute;
+  width: 74px; height: 26px;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(232,200,142,0.75),
+    rgba(232,200,142,0.75) 6px,
+    rgba(200,155,92,0.55) 6px,
+    rgba(200,155,92,0.55) 12px
+  );
+  opacity: .85;
+  box-shadow: 0 2px 4px rgba(59,35,49,0.15);
+}
+
+.pin{
+  position: absolute;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 30%, #fff, var(--rose) 45%, var(--rose-deep) 100%);
+  box-shadow: 0 3px 4px rgba(59,35,49,0.35);
+}
+
+.hairline{
+  border: none;
+  border-top: 1px solid var(--gold-soft);
+  max-width: 220px;
+  margin: 2.4rem auto;
+}
+
+/* ---------- home: destination cards ---------- */
+.destinations{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 2.1rem;
+  padding: 1rem 0 4rem;
+}
+
+.dest-card{
+  position: relative;
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--card);
+  border: 1px solid rgba(200,155,92,0.35);
+  border-radius: var(--radius-card);
+  padding: 1.6rem 1.4rem 1.5rem;
+  box-shadow: var(--shadow-card);
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.dest-card:hover{
+  transform: rotate(var(--tilt, 0deg)) translateY(-5px);
+  box-shadow: 0 16px 30px -14px rgba(59,35,49,0.4);
+}
+.dest-card .pin{ top: -7px; left: 50%; margin-left: -7px; }
+.dest-card .dest-icon{ font-size: 1.8rem; display:block; margin-bottom:.4rem; }
+.dest-card h3{ margin-bottom: .25rem; }
+.dest-card p{ margin: 0; color: var(--ink-soft); font-size: .92rem; }
+.dest-card .soon{
+  display:inline-block; margin-top:.6rem;
+  font-family:'Literata',serif; font-style: italic;
+  font-size:.78rem; color: var(--gold); 
+}
+
+/* ---------- corkboard / memories grid ---------- */
+.corkboard{
+  padding: 1rem 0 5rem;
+  column-count: 1;
+  column-gap: 30px;
+}
+@media (min-width: 620px){ .corkboard{ column-count: 2; } }
+@media (min-width: 980px){ .corkboard{ column-count: 3; } }
+
+.memory{
+  break-inside: avoid;
+  margin: 0 0 32px;
+  transform: rotate(var(--tilt, 0deg));
+}
+
+.flip-card{
+  position: relative;
+  perspective: 1400px;
+  cursor: pointer;
+}
+.flip-inner{
+  position: relative;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform .7s cubic-bezier(.22,.85,.28,1);
+}
+.flip-card.flipped .flip-inner{ transform: rotateY(180deg); }
+
+.flip-front, .flip-back{
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip-back{
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
+/* front: polaroid */
+.flip-front{
+  background: var(--card);
+  padding: 14px 14px 20px;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+.photo-stack{
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+.photo-stack img{
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4 / 5;
+}
+.photo-stack.pair{ display: flex; gap: 4px; }
+.photo-stack.pair img{ width: 50%; aspect-ratio: 3 / 5; }
+
+/* give the back face reliable room for text regardless of photo shape */
+.flip-inner{ min-height: 340px; }
+
+.flip-front .tape{ top: -12px; left: 50%; margin-left: -37px; }
+.flip-front .cap-title{
+  font-family: 'Caveat', cursive;
+  color: var(--rose-deep);
+  font-size: 1.5rem;
+  margin: .6rem 0 0;
+  text-align: center;
+}
+.flip-front .cap-hint{
+  text-align: center;
+  font-size: .78rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: .1rem 0 0;
+}
+
+/* back: the note */
+.flip-back{
+  background:
+    linear-gradient(var(--sage), var(--sage)),
+    repeating-linear-gradient(
+      to bottom,
+      transparent, transparent 27px,
+      rgba(168,66,90,0.14) 27px, rgba(168,66,90,0.14) 28px
+    );
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+.flip-back .pin{ top: -7px; left: 50%; margin-left: -7px; }
+.flip-back p{
+  font-size: .98rem;
+  color: var(--ink);
+  margin: 0;
+}
+.flip-back .cap-hint{
+  margin-top: .9rem;
+  font-size: .76rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  text-align: right;
+}
+
+/* keep front/back same footprint so the flip doesn't jump */
+.flip-card{ min-height: 0; }
+.flip-inner{ width: 100%; }
+.flip-back{ }
+
+/* buttons */
+.btn{
+  display: inline-block;
+  font-family: 'Literata', serif;
+  font-size: .95rem;
+  color: var(--rose-deep);
+  text-decoration: none;
+  border-bottom: 2px solid var(--gold);
+  padding-bottom: 2px;
+}
+.btn:hover{ color: var(--rose); border-color: var(--rose); }
+
+/* stub / coming-soon pages */
+.stub{
+  text-align: center;
+  padding: 5rem 1.6rem 6rem;
+}
+.stub .pin{ position: static; display:inline-block; margin-bottom: 1.2rem; }
+
+/* ---------- gallery: plain photo/video wall ---------- */
+.gallery-item{
+  position: relative;
+  break-inside: avoid;
+  margin: 0 0 28px;
+  background: var(--card);
+  padding: 12px 12px 14px;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  transform: rotate(var(--tilt, 0deg));
+  cursor: zoom-in;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.gallery-item:hover{
+  transform: rotate(var(--tilt, 0deg)) translateY(-4px);
+  box-shadow: 0 16px 30px -14px rgba(59,35,49,0.4);
+}
+.gallery-item .tape{ top: -12px; left: 50%; margin-left: -37px; }
+.gallery-item img{
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+  object-fit: cover;
+}
+.gallery-item .play-badge{
+  position: absolute;
+  top: 12px; left: 12px; right: 12px; bottom: 26px;
+  display: flex; align-items: center; justify-content: center;
+  pointer-events: none;
+}
+.gallery-item .play-badge span{
+  width: 54px; height: 54px;
+  border-radius: 50%;
+  background: rgba(59,35,49,0.55);
+  color: #fff;
+  font-size: 1.2rem;
+  display: flex; align-items: center; justify-content: center;
+  padding-left: 4px;
+}
+
+/* lightbox */
+.lightbox{
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(37,22,29,0.86);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.lightbox.open{ display: flex; }
+.lightbox-content img,
+.lightbox-content video{
+  display: block;
+  max-width: min(92vw, 720px);
+  max-height: 86vh;
+  border-radius: 4px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+.lightbox-close{
+  position: absolute;
+  top: 1.1rem; right: 1.5rem;
+  color: #fff;
+  font-family: 'Caveat', cursive;
+  font-size: 2.4rem;
+  line-height: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ---------- do you love me ---------- */
+.love-stage{
+  min-height: 56vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  padding: 1.5rem 1.6rem 5rem;
+}
+.love-round{ width: 100%; max-width: 560px; }
+.love-buttons{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 240px;
+  margin: 1.6rem auto 0;
+}
+.love-btn{
+  font-family: 'Literata', serif;
+  border: none;
+  border-radius: 40px;
+  padding: .85rem 2.1rem;
+  font-size: 1.05rem;
+}
+.love-btn.yes{
+  background: var(--rose-deep);
+  color: #fff;
+  box-shadow: var(--shadow-card);
+  transition: transform .3s ease;
+  cursor: pointer;
+}
+.love-btn.no{
+  position: absolute;
+  top: 42%;
+  left: 62%;
+  transform: translate(-50%, -50%);
+  background: var(--card);
+  color: var(--ink-soft);
+  border: 1px solid var(--gold-soft);
+  transition: top .22s ease, left .22s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.love-stage .cap-hint{
+  margin-top: .6rem;
+  font-size: .85rem;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+.love-reveal{ max-width: 560px; margin-top: .5rem; }
+.love-reveal .pagelist{
+  text-align: left;
+  display: inline-block;
+  margin: 1rem 0;
+  padding-left: 1.2rem;
+}
+.love-reveal .pagelist li{ margin-bottom: .5rem; }
+.hidden{ display: none !important; }
+
+/* ---------- happy birthday: lock + countdown ---------- */
+.locked{
+  text-align: center;
+  padding: 3rem 1.6rem 6rem;
+}
+.locked .lock-icon{ font-size: 3rem; display: block; margin-bottom: 1rem; }
+.countdown{
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  margin-top: 2.2rem;
+  flex-wrap: wrap;
+}
+.countdown .unit{
+  background: var(--card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 1rem 1.2rem;
+  min-width: 84px;
+}
+.countdown .num{
+  font-family: 'Caveat', cursive;
+  font-size: 2.6rem;
+  color: var(--rose-deep);
+  display: block;
+  line-height: 1;
+}
+.countdown .label{
+  font-size: .75rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- happy birthday: cake + candles ---------- */
+.cake-wrap{ text-align: center; padding: 2.5rem 1.6rem 1rem; }
+.cake{
+  position: relative;
+  max-width: 440px;
+  margin: 2.2rem auto 0;
+}
+.candles{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 8px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: -6px;
+}
+.candle{
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 18px;
+  padding: 20px 0 0;
+  position: relative;
+}
+.candle .stick{
+  width: 5px;
+  height: 22px;
+  margin: 0 auto;
+  border-radius: 2px;
+  background: linear-gradient(var(--blush), var(--rose));
+}
+.candle .flame{
+  position: absolute;
+  top: 0; left: 50%;
+  margin-left: -5px;
+  width: 10px; height: 14px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background: radial-gradient(circle at 50% 70%, #FFE9A8, #F4A340 60%, #C8541C);
+  animation: flicker 1.6s ease-in-out infinite;
+}
+.candle.out .flame{ display: none; }
+@keyframes flicker{
+  0%, 100%{ transform: scaleY(1) rotate(-3deg); }
+  50%{ transform: scaleY(1.12) rotate(3deg); }
+}
+.cake-body{
+  height: 108px;
+  background: linear-gradient(var(--card), var(--sage));
+  border-radius: 14px 14px 32px 32px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  z-index: 1;
+}
+.cake-plate{
+  height: 14px;
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--gold-soft);
+  border-radius: 50%;
+}
+.cake-hint{
+  margin-top: 1.3rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  font-size: .9rem;
+}
+
+/* ---------- happy birthday: the letter ---------- */
+.letter-wrap{
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2.2rem 1.6rem 5rem;
+  text-align: center;
+}
+.letter-wrap p{ margin: 0 auto 1rem; text-align: left; }
+.letter-wrap .signature{
+  font-family: 'Caveat', cursive;
+  font-size: 1.9rem;
+  color: var(--rose-deep);
+  margin-top: 1.4rem;
+  text-align: center;
+}
+
+/* ---------- confetti ---------- */
+.confetti-piece{
+  position: fixed;
+  top: -20px;
+  width: 9px; height: 14px;
+  z-index: 200;
+  pointer-events: none;
+  animation: confetti-fall linear forwards;
+}
+@keyframes confetti-fall{
+  to{ transform: translateY(110vh) rotate(540deg); opacity: .9; }
+}
+
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="wordmark" href="index.html">K <span class="heart">♡</span> R</a>
+  <button class="nav-toggle" aria-label="Toggle menu">Menu</button>
+  <nav class="site-nav">
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="picture-stories.html">Picture Stories</a>
+    <a href="love.html" class="current">Do You Love Me?</a>
+    <a href="birthday.html">Happy Birthday</a>
+  </nav>
+</header>
+
+<section class="hero" style="padding-bottom:0;">
+  <p class="kicker">an important, very scientific question</p>
+  <h1>Do you love me?</h1>
+</section>
+
+<div class="love-stage">
+
+  <div class="love-round" id="loveRound">
+    <div class="love-buttons" id="loveButtons">
+      <button class="love-btn yes" id="loveYes">Yes 💕</button>
+      <button class="love-btn no" id="loveNo">No</button>
+    </div>
+    <p class="cap-hint" id="loveHint">go ahead, try tapping "no"</p>
+  </div>
+
+  <div class="love-reveal hidden" id="loveReveal">
+    <h2>I knew it.</h2>
+    <p>Okay, since that's settled — a quick map of everything on this site, so you always know your way around:</p>
+    <ul class="pagelist">
+      <li><strong>Home</strong> — where all of this starts.</li>
+      <li><strong>Gallery</strong> — every photo of us, all in one place.</li>
+      <li><strong>Picture Stories</strong> — tap a photo, read the little story behind it.</li>
+      <li><strong>Do You Love Me?</strong> — you're standing in it right now.</li>
+      <li><strong>Happy Birthday</strong> — the big one. Save it for the 30th.</li>
+    </ul>
+    <p><a class="btn" href="index.html">back to home</a></p>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <span class="script">only one right answer here</span>
+</footer>
+
+<script>
+// Mobile nav toggle
+document.addEventListener('DOMContentLoaded', () => {
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  if (toggle && nav){
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+  }
+
+  // Flip cards (Picture Stories)
+  document.querySelectorAll('.flip-card').forEach(card => {
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    const front = card.querySelector('.flip-front .cap-title');
+    card.setAttribute('aria-label', front ? front.textContent : 'Photo, tap to read the story');
+
+    const toggleFlip = () => card.classList.toggle('flipped');
+
+    card.addEventListener('click', toggleFlip);
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        toggleFlip();
+      }
+    });
+  });
+
+  // Gallery lightbox
+  const lightbox = document.getElementById('lightbox');
+  if (lightbox){
+    const content = lightbox.querySelector('.lightbox-content');
+    const closeBtn = lightbox.querySelector('.lightbox-close');
+
+    const openLightbox = (item) => {
+      const videoSrc = item.getAttribute('data-video');
+      content.innerHTML = '';
+      if (videoSrc){
+        const video = document.createElement('video');
+        video.src = videoSrc;
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        content.appendChild(video);
+      } else {
+        const img = item.querySelector('img');
+        const big = document.createElement('img');
+        big.src = img.src;
+        big.alt = img.alt || '';
+        content.appendChild(big);
+      }
+      lightbox.classList.add('open');
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      const video = content.querySelector('video');
+      if (video) video.pause();
+      content.innerHTML = '';
+    };
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('role', 'button');
+      item.addEventListener('click', () => openLightbox(item));
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' '){
+          e.preventDefault();
+          openLightbox(item);
+        }
+      });
+    });
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  }
+
+  // Do You Love Me — the "no" button that can't be caught
+  const yesBtn = document.getElementById('loveYes');
+  const noBtn = document.getElementById('loveNo');
+  if (yesBtn && noBtn){
+    const stage = document.getElementById('loveButtons');
+    const hint = document.getElementById('loveHint');
+    const round = document.getElementById('loveRound');
+    const reveal = document.getElementById('loveReveal');
+    const dodgeMessages = ['nice try', 'nope', 'so close', 'not happening', 'try again?', 'almost had it'];
+    let dodges = 0;
+
+    const dodge = (e) => {
+      e.preventDefault();
+      const rect = stage.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+      const maxX = Math.max(rect.width - btnRect.width, 0);
+      const maxY = Math.max(rect.height - btnRect.height, 0);
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+      noBtn.style.left = x + 'px';
+      noBtn.style.top = y + 'px';
+      noBtn.style.transform = 'none';
+      dodges += 1;
+      const scale = Math.min(1 + dodges * 0.05, 1.5);
+      yesBtn.style.transform = 'scale(' + scale + ')';
+      if (dodges >= 2 && hint){
+        hint.textContent = dodgeMessages[Math.min(dodges - 2, dodgeMessages.length - 1)];
+      }
+    };
+
+    noBtn.addEventListener('pointerenter', dodge);
+    noBtn.addEventListener('touchstart', dodge, { passive: false });
+    noBtn.addEventListener('click', dodge);
+
+    yesBtn.addEventListener('click', () => {
+      round.classList.add('hidden');
+      reveal.classList.remove('hidden');
+    });
+  }
+});
+
+// Happy Birthday: countdown lock, candles, confetti
+(function(){
+  const lockedEl = document.getElementById('bdayLocked');
+  const unlockedEl = document.getElementById('bdayUnlocked');
+  if (!lockedEl || !unlockedEl) return;
+
+  const target = new Date('2026-09-30T00:00:00');
+
+  function launchConfetti(){
+    const colors = ['#A8425A', '#C89B5C', '#F3C9D4', '#E7DCC6', '#7E2E42'];
+    for (let i = 0; i < 70; i++){
+      const p = document.createElement('div');
+      p.className = 'confetti-piece';
+      p.style.left = Math.random() * 100 + 'vw';
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      p.style.animationDuration = (2.5 + Math.random() * 1.5) + 's';
+      p.style.transform = 'rotate(' + Math.floor(Math.random() * 360) + 'deg)';
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), 4200);
+    }
+  }
+
+  function showUnlocked(){
+    lockedEl.classList.add('hidden');
+    unlockedEl.classList.remove('hidden');
+    launchConfetti();
+  }
+
+  function pad2(n){
+    n = Math.floor(n);
+    return n < 10 ? '0' + n : String(n);
+  }
+
+  function tick(){
+    const now = new Date();
+    const diff = target - now;
+    if (diff <= 0){
+      showUnlocked();
+      return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    const dEl = document.getElementById('cdDays');
+    const hEl = document.getElementById('cdHours');
+    const mEl = document.getElementById('cdMins');
+    const sEl = document.getElementById('cdSecs');
+    if (dEl) dEl.textContent = d;
+    if (hEl) hEl.textContent = pad2(h);
+    if (mEl) mEl.textContent = pad2(m);
+    if (sEl) sEl.textContent = pad2(s);
+  }
+
+  if (new Date() >= target){
+    lockedEl.classList.add('hidden');
+    unlockedEl.classList.remove('hidden');
+  } else {
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  const candles = document.querySelectorAll('.candle');
+  const letterSection = document.getElementById('bdayLetter');
+  const cakeHint = document.getElementById('cakeHint');
+  let remaining = candles.length;
+  candles.forEach(c => {
+    c.addEventListener('click', () => {
+      if (c.classList.contains('out')) return;
+      c.classList.add('out');
+      remaining -= 1;
+      if (remaining === 0 && letterSection){
+        if (cakeHint) cakeHint.textContent = 'happy birthday, Rajvieeeee 🎂';
+        letterSection.classList.remove('hidden');
+        launchConfetti();
+        letterSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+})();
+
+</script>
+</body>
+</html>
